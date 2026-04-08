@@ -140,35 +140,6 @@
       align-items: center;
     }
 
-    .hero-signature {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 12px;
-      margin-bottom: 28px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      line-height: 1;
-    }
-
-    .hero-signature-main {
-      font-size: clamp(1.35rem, 2vw, 1.8rem);
-      font-weight: 500;
-      color: var(--text);
-    }
-
-    .hero-signature-divider {
-      font-size: clamp(1.1rem, 1.5vw, 1.25rem);
-      font-weight: 300;
-      color: rgba(21, 21, 21, 0.34);
-    }
-
-    .hero-signature-sub {
-      font-size: clamp(0.92rem, 1.2vw, 1rem);
-      font-weight: 500;
-      color: var(--accent);
-      transform: translateY(-1px);
-    }
-
     .hero h1 {
       margin: 0;
       max-width: 8.4ch;
@@ -223,6 +194,24 @@
       height: 62%;
     }
 
+    .logo-frame-a,
+    .logo-frame-b,
+    .logo-frame-c {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(21, 21, 21, 0.12);
+    }
+
+    .logo-frame-b {
+      inset: 18%;
+      border-color: rgba(31, 79, 70, 0.24);
+    }
+
+    .logo-frame-c {
+      inset: 36%;
+      border-color: rgba(21, 21, 21, 0.14);
+    }
+
     .logo-line-v {
       position: absolute;
       left: 50%;
@@ -239,7 +228,7 @@
       top: 50%;
       width: 100%;
       height: 1px;
-      background: rgba(21, 21, 21, 0.12);
+      background: rgba(31, 79, 70, 0.22);
       transform: translateY(-50%);
     }
 
@@ -249,8 +238,8 @@
       left: 50%;
       top: 50%;
       width: 1px;
-      height: 124%;
-      background: rgba(31, 79, 70, 0.22);
+      height: 138%;
+      background: rgba(21, 21, 21, 0.1);
       transform-origin: center;
     }
 
@@ -262,18 +251,15 @@
       transform: translate(-50%, -50%) rotate(-45deg);
     }
 
-    .logo-jr {
+    .logo-core {
       position: absolute;
       left: 50%;
       top: 50%;
+      width: 22%;
+      aspect-ratio: 1 / 1;
+      border: 1px solid rgba(31, 79, 70, 0.28);
+      background: rgba(245, 243, 238, 0.92);
       transform: translate(-50%, -50%);
-      font-size: clamp(1.4rem, 2vw, 1.85rem);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 500;
-      background: rgba(245, 243, 238, 0.9);
-      padding: 10px 14px 10px 18px;
     }
 
     .section {
@@ -557,12 +543,6 @@
     <section class="hero" id="uvod">
       <div class="container hero-grid">
         <div>
-          <div class="hero-signature">
-            <span class="hero-signature-main">JAN REHÁK</span>
-            <span class="hero-signature-divider">|</span>
-            <span class="hero-signature-sub">ELEKTRO PROJEKCE</span>
-          </div>
-
           <h1>Čisté a promyšlené řešení elektroinstalací.</h1>
           <p class="hero-text">
             Projektuji elektroinstalace pro rodinné domy, rekonstrukce i menší stavby
@@ -573,11 +553,14 @@
         <div class="hero-side">
           <div class="logo-mark" aria-hidden="true">
             <div class="logo-inner">
+              <div class="logo-frame-a"></div>
+              <div class="logo-frame-b"></div>
+              <div class="logo-frame-c"></div>
               <div class="logo-line-v"></div>
               <div class="logo-line-h"></div>
               <div class="logo-line-d1"></div>
               <div class="logo-line-d2"></div>
-              <div class="logo-jr">JR</div>
+              <div class="logo-core"></div>
             </div>
           </div>
         </div>
@@ -727,52 +710,36 @@
     const navLinks = document.querySelectorAll(".nav-link");
     const sections = document.querySelectorAll("main section[id]");
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        let visibleSectionId = null;
-        let highestRatio = 0;
+    function setActiveLink() {
+      const headerOffset = 140;
+      const scrollPosition = window.scrollY + headerOffset;
 
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio > highestRatio) {
-            highestRatio = entry.intersectionRatio;
-            visibleSectionId = entry.target.id;
-          }
-        });
+      let currentSectionId = "uvod";
 
-        if (visibleSectionId) {
-          navLinks.forEach((link) => {
-            link.classList.toggle(
-              "active",
-              link.getAttribute("href") === `#${visibleSectionId}`
-            );
-          });
+      sections.forEach((section) => {
+        const top = section.offsetTop;
+        const bottom = top + section.offsetHeight;
+
+        if (scrollPosition >= top && scrollPosition < bottom) {
+          currentSectionId = section.id;
         }
-      },
-      {
-        root: null,
-        rootMargin: "-35% 0px -45% 0px",
-        threshold: [0.15, 0.3, 0.5, 0.7]
+      });
+
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+        currentSectionId = "kontakt";
       }
-    );
 
-    sections.forEach((section) => observer.observe(section));
-
-    function updateActiveOnLoadAndBottom() {
-      const scrollPosition = window.scrollY + window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-
-      if (documentHeight - scrollPosition < 80) {
-        navLinks.forEach((link) => {
-          link.classList.toggle(
-            "active",
-            link.getAttribute("href") === "#kontakt"
-          );
-        });
-      }
+      navLinks.forEach((link) => {
+        link.classList.toggle(
+          "active",
+          link.getAttribute("href") === `#${currentSectionId}`
+        );
+      });
     }
 
-    window.addEventListener("load", updateActiveOnLoadAndBottom);
-    window.addEventListener("scroll", updateActiveOnLoadAndBottom);
+    window.addEventListener("scroll", setActiveLink);
+    window.addEventListener("load", setActiveLink);
+    window.addEventListener("resize", setActiveLink);
   </script>
 </body>
 </html>
