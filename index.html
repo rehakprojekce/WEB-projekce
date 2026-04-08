@@ -1,17 +1,672 @@
 <!DOCTYPE html>
-<html>
+<html lang="cs">
 <head>
-  <meta charset="UTF-8">
-  <title>Jan Rehák</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jan Rehák | Elektro projekce</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #111827;
+      --card: #ffffff;
+      --text: #0f172a;
+      --text-light: #475569;
+      --line: #e2e8f0;
+      --accent: #2563eb;
+      --accent-2: #1d4ed8;
+      --white: #ffffff;
+      --section-bg: #f8fafc;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+      --max: 1150px;
+      --header-h: 76px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 40px, var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: var(--header-h);
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .header-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      color: var(--white);
+      font-size: 1.2rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: #93c5fd;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: rgba(255,255,255,0.86);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.96rem;
+      font-weight: 600;
+      transition: 0.25s ease;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav a:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .nav a.active {
+      color: var(--white);
+      border-bottom-color: #60a5fa;
+      background: rgba(255,255,255,0.08);
+    }
+
+    section {
+      scroll-margin-top: calc(var(--header-h) + 18px);
+    }
+
+    .hero {
+      min-height: calc(100vh - var(--header-h));
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.72)),
+        linear-gradient(135deg, #1e293b, #0f172a);
+      color: var(--white);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 36px;
+      align-items: center;
+      padding: 70px 0;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.3rem, 5vw, 4.4rem);
+      line-height: 1.05;
+      margin: 0 0 18px;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.86);
+      max-width: 700px;
+      margin: 0 0 28px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .badge {
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      color: rgba(255,255,255,0.9);
+      font-size: 0.95rem;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-2);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.18);
+      color: var(--white);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.11);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.18);
+    }
+
+    .hero-card h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 1.2rem;
+    }
+
+    .hero-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .hero-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.88);
+    }
+
+    .hero-list li:last-child {
+      border-bottom: none;
+    }
+
+    .section {
+      padding: 95px 0;
+    }
+
+    .section-alt {
+      background: var(--section-bg);
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 40px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.9rem, 3vw, 2.7rem);
+      line-height: 1.1;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--text-light);
+      font-size: 1.05rem;
+    }
+
+    .projects-grid,
+    .references-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .project-top {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-weight: 700;
+      margin-bottom: 18px;
+      font-size: 1.05rem;
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      margin: 0 0 18px;
+      color: var(--text-light);
+    }
+
+    .card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text-light);
+    }
+
+    .reference-quote {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .reference-name {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .reference-role {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-item {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .contact-label {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+
+    .contact-value {
+      font-weight: 700;
+      word-break: break-word;
+    }
+
+    .contact-note {
+      color: var(--text-light);
+      margin-top: 18px;
+      margin-bottom: 0;
+    }
+
+    .footer {
+      padding: 26px 0 40px;
+      background: #fff;
+      border-top: 1px solid var(--line);
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .projects-grid,
+      .references-grid,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid {
+        padding: 56px 0;
+      }
+    }
+
+    @media (max-width: 760px) {
+      :root {
+        --header-h: 126px;
+      }
+
+      .site-header {
+        height: auto;
+        min-height: var(--header-h);
+      }
+
+      .header-inner {
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        width: 100%;
+        gap: 8px;
+      }
+
+      .nav a {
+        padding: 9px 12px;
+        font-size: 0.93rem;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .hero-text p,
+      .section-head p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Jan Rehák</h1>
-  <p>Elektro projekce</p>
 
-  <h2>O mně</h2>
-  <p>Dělám projekty elektroinstalací.</p>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#domu" class="logo">Jan <span>Rehák</span> | Elektro projekce</a>
 
-  <h2>Kontakt</h2>
-  <p>Email: rehak.projekce@gmail.com</p>
+      <nav class="nav" id="mainNav">
+        <a href="#domu" class="nav-link active">Domů</a>
+        <a href="#ukazky" class="nav-link">Ukázky projektů</a>
+        <a href="#reference" class="nav-link">Reference</a>
+        <a href="#kontakt" class="nav-link">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="domu" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <h1>Elektro projekce přehledně, čistě a spolehlivě</h1>
+          <p>
+            Zajišťuji zpracování projektové dokumentace elektroinstalací
+            pro rodinné domy, bytové objekty, rekonstrukce i menší komerční prostory.
+            Důraz kladu na technickou správnost, přehlednost a praktické řešení.
+          </p>
+
+          <div class="hero-badges">
+            <div class="badge">Rodinné domy</div>
+            <div class="badge">Rekonstrukce</div>
+            <div class="badge">Technická dokumentace</div>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#kontakt">Nezávazná poptávka</a>
+            <a class="btn btn-secondary" href="#ukazky">Zobrazit ukázky</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>Co nabízím</h3>
+          <ul class="hero-list">
+            <li>Projekt elektroinstalace pro novostavby a rekonstrukce</li>
+            <li>Řešení rozvaděčů, okruhů a technické návaznosti</li>
+            <li>Přehledné podklady pro realizaci i komunikaci s profesemi</li>
+            <li>Individuální přístup podle typu stavby a rozsahu zakázky</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="ukazky" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Ukázky projektů</h2>
+          <p>
+            Níže jsou příklady typů zakázek, které lze na webu prezentovat.
+            Texty si později upravíš podle skutečných projektů.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="card">
+            <div class="project-top">RD</div>
+            <h3>Rodinný dům – novostavba</h3>
+            <p>
+              Kompletní návrh silnoproudé elektroinstalace včetně rozmístění zásuvek,
+              osvětlení, rozvaděče a návazností na další technologie objektu.
+            </p>
+            <ul>
+              <li>návrh okruhů</li>
+              <li>koordinace dispozice</li>
+              <li>přehledná dokumentace</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="project-top">RE</div>
+            <h3>Rekonstrukce bytu</h3>
+            <p>
+              Úprava elektroinstalace pro modernizaci interiéru s důrazem
+              na praktické rozmístění prvků a bezpečné technické řešení.
+            </p>
+            <ul>
+              <li>nové trasy vedení</li>
+              <li>úpravy rozvaděče</li>
+              <li>řešení podle dispozice</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="project-top">KO</div>
+            <h3>Menší komerční prostor</h3>
+            <p>
+              Projekt elektroinstalace pro kanceláře, provozovny a menší objekty
+              s ohledem na provoz, přehlednost a budoucí údržbu.
+            </p>
+            <ul>
+              <li>zásuvkové a světelné okruhy</li>
+              <li>technické zázemí</li>
+              <li>logická struktura řešení</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="reference" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Reference</h2>
+          <p>
+            Sem můžeš dát skutečné reference klientů. Zatím jsou zde ukázkové texty.
+          </p>
+        </div>
+
+        <div class="references-grid">
+          <article class="card">
+            <p class="reference-quote">
+              „Spolupráce byla věcná, rychlá a bez zbytečných komplikací.
+              Dokumentace byla přehledná a dobře použitelná při realizaci.“
+            </p>
+            <div class="reference-name">Investor rodinného domu</div>
+            <div class="reference-role">Soukromý klient</div>
+          </article>
+
+          <article class="card">
+            <p class="reference-quote">
+              „Oceňujeme technický přístup a schopnost navrhnout řešení,
+              které odpovídalo skutečným potřebám stavby.“
+            </p>
+            <div class="reference-name">Rekonstrukce bytové jednotky</div>
+            <div class="reference-role">Soukromý klient</div>
+          </article>
+
+          <article class="card">
+            <p class="reference-quote">
+              „Komunikace byla jasná, termíny dodržené a výstupy přehledné.
+              Doporučujeme pro menší i střední projekty.“
+            </p>
+            <div class="reference-name">Menší provozovna</div>
+            <div class="reference-role">Firemní zákazník</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Kontakt</h2>
+          <p>
+            Máš zájem o spolupráci nebo chceš nezávazně probrat rozsah projektu?
+            Ozvi se.
+          </p>
+        </div>
+
+        <div class="contact-wrap">
+          <div class="contact-box">
+            <h3>Kontaktní údaje</h3>
+            <div class="contact-list">
+              <div class="contact-item">
+                <span class="contact-label">Jméno</span>
+                <div class="contact-value">Jan Rehák</div>
+              </div>
+
+              <div class="contact-item">
+                <span class="contact-label">E-mail</span>
+                <div class="contact-value">tvuj@email.cz</div>
+              </div>
+
+              <div class="contact-item">
+                <span class="contact-label">Telefon</span>
+                <div class="contact-value">+420 123 456 789</div>
+              </div>
+
+              <div class="contact-item">
+                <span class="contact-label">Lokalita</span>
+                <div class="contact-value">Česká republika</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-box">
+            <h3>Jak probíhá spolupráce</h3>
+            <div class="contact-list">
+              <div class="contact-item">
+                <span class="contact-label">1. Poptávka</span>
+                <div class="contact-value">Pošleš základní informace o projektu.</div>
+              </div>
+
+              <div class="contact-item">
+                <span class="contact-label">2. Upřesnění</span>
+                <div class="contact-value">Domluvíme rozsah, termín a potřebné podklady.</div>
+              </div>
+
+              <div class="contact-item">
+                <span class="contact-label">3. Zpracování</span>
+                <div class="contact-value">Připravím projektovou dokumentaci dle dohody.</div>
+              </div>
+            </div>
+
+            <p class="contact-note">
+              Doplň si sem reálný e-mail, telefon a případně město nebo region.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © 2026 Jan Rehák | Elektro projekce
+    </div>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    function setActiveLink() {
+      const scrollY = window.pageYOffset;
+      const offset = 140;
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - offset;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute("id");
+
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          navLinks.forEach((link) => link.classList.remove("active"));
+          const activeLink = document.querySelector('.nav-link[href="#' + sectionId + '"]');
+          if (activeLink) activeLink.classList.add("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", setActiveLink);
+    window.addEventListener("load", setActiveLink);
+  </script>
+
 </body>
 </html>
