@@ -8,16 +8,12 @@
     :root {
       --bg: #f5f3ee;
       --bg-2: #efeae1;
-      --card: #fbf9f4;
       --text: #151515;
       --muted: #5f5a52;
       --line: #d8d1c7;
       --accent: #1f4f46;
-      --accent-soft: #dbe7e3;
       --max: 1180px;
       --header-h: 82px;
-      --radius: 22px;
-      --shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
     }
 
     * {
@@ -41,11 +37,6 @@
       text-decoration: none;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
     .container {
       width: min(100% - 48px, var(--max));
       margin: 0 auto;
@@ -58,9 +49,9 @@
       height: var(--header-h);
       display: flex;
       align-items: center;
-      background: rgba(245, 243, 238, 0.82);
+      background: rgba(245, 243, 238, 0.84);
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(216, 209, 199, 0.7);
+      border-bottom: 1px solid rgba(216, 209, 199, 0.75);
     }
 
     .header-inner {
@@ -76,23 +67,25 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      letter-spacing: 0.14em;
-      font-size: 0.8rem;
       white-space: nowrap;
+      letter-spacing: 0.14em;
+      font-size: 0.96rem;
+      font-weight: 800;
     }
 
     .brand-main {
       color: var(--text);
-      font-weight: 600;
+      font-weight: 800;
     }
 
     .brand-divider {
-      color: rgba(21, 21, 21, 0.35);
+      color: rgba(21, 21, 21, 0.42);
+      font-weight: 700;
     }
 
     .brand-sub {
       color: var(--accent);
-      font-weight: 600;
+      font-weight: 800;
     }
 
     nav {
@@ -103,7 +96,7 @@
 
     nav a {
       position: relative;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: var(--muted);
       transition: color 0.25s ease;
     }
@@ -129,11 +122,6 @@
     nav a:hover::after,
     nav a.active::after {
       transform: scaleX(1);
-    }
-
-    .contact-link {
-      color: var(--accent);
-      font-weight: 600;
     }
 
     .hero {
@@ -193,6 +181,26 @@
       padding: 72px 0;
     }
 
+    .section-head-simple {
+      margin-bottom: 24px;
+    }
+
+    .section-title-green {
+      margin: 0 0 18px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      color: var(--accent);
+    }
+
+    .about-text {
+      max-width: 56rem;
+      margin: 0;
+      font-size: 1.06rem;
+      color: var(--muted);
+    }
+
     .section-head {
       display: grid;
       grid-template-columns: 220px 1fr;
@@ -206,7 +214,7 @@
       font-size: 0.78rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--accent);
     }
 
     .section-intro {
@@ -216,48 +224,48 @@
       color: var(--muted);
     }
 
-    .focus-list {
+    .project-list {
       border-top: 1px solid var(--line);
     }
 
-    .focus-item {
+    .project-item {
       display: grid;
       grid-template-columns: 100px 1fr;
       gap: 28px;
       padding: 30px 0;
       border-bottom: 1px solid var(--line);
-      transition: transform 0.28s ease, padding-left 0.28s ease;
+      transition: transform 0.28s ease;
     }
 
-    .focus-item:hover {
+    .project-item:hover {
       transform: translateX(8px);
     }
 
-    .focus-number {
+    .project-number {
       font-size: 0.9rem;
       letter-spacing: 0.16em;
       color: rgba(21, 21, 21, 0.38);
       transition: color 0.28s ease;
     }
 
-    .focus-item:hover .focus-number {
+    .project-item:hover .project-number {
       color: var(--accent);
     }
 
-    .focus-content {
+    .project-content {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
       gap: 28px;
       align-items: start;
     }
 
-    .focus-title-wrap {
+    .project-title-wrap {
       position: relative;
       padding-left: 0;
       transition: padding-left 0.28s ease;
     }
 
-    .focus-title-wrap::before {
+    .project-title-wrap::before {
       content: "";
       position: absolute;
       left: 0;
@@ -268,15 +276,15 @@
       transition: width 0.28s ease;
     }
 
-    .focus-item:hover .focus-title-wrap {
+    .project-item:hover .project-title-wrap {
       padding-left: 36px;
     }
 
-    .focus-item:hover .focus-title-wrap::before {
+    .project-item:hover .project-title-wrap::before {
       width: 22px;
     }
 
-    .focus-title {
+    .project-title {
       margin: 0;
       font-size: clamp(1.5rem, 2vw, 2.2rem);
       line-height: 1.06;
@@ -284,25 +292,95 @@
       letter-spacing: -0.03em;
     }
 
-    .focus-meta {
-      display: flex;
-      justify-content: flex-end;
-      align-items: baseline;
-      gap: 16px;
-      font-size: 0.9rem;
-      color: var(--muted);
-      text-align: right;
-    }
-
-    .focus-meta span:last-child {
-      color: rgba(21, 21, 21, 0.44);
-    }
-
-    .focus-desc {
+    .project-desc {
       margin: 12px 0 0;
       max-width: 34rem;
       font-size: 1rem;
       color: var(--muted);
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: flex-end;
+      align-items: baseline;
+      text-align: right;
+    }
+
+    .pdf-link {
+      position: relative;
+      display: inline-block;
+      color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding-bottom: 2px;
+    }
+
+    .pdf-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0.3);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    .pdf-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    .contact-title {
+      margin: 0 0 22px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      color: var(--accent);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 28px;
+      border-top: 1px solid var(--line);
+      padding-top: 26px;
+    }
+
+    .contact-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 14px;
+      max-width: 42rem;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(216, 209, 199, 0.75);
+    }
+
+    .contact-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .contact-row span:first-child {
+      color: rgba(21, 21, 21, 0.48);
+    }
+
+    .contact-row a {
+      color: var(--accent);
     }
 
     .footer {
@@ -324,14 +402,11 @@
       font-size: 0.92rem;
     }
 
-    .footer-row a {
-      color: var(--accent);
-    }
-
     @media (max-width: 960px) {
       .hero-grid,
       .section-head,
-      .focus-content {
+      .project-content,
+      .contact-grid {
         grid-template-columns: 1fr;
       }
 
@@ -339,7 +414,7 @@
         max-width: 12ch;
       }
 
-      .focus-meta {
+      .project-meta {
         justify-content: flex-start;
         text-align: left;
       }
@@ -365,13 +440,18 @@
         padding-top: 72px;
       }
 
-      .focus-item {
+      .project-item {
         grid-template-columns: 1fr;
         gap: 14px;
       }
 
-      .focus-number {
+      .project-number {
         margin-bottom: 2px;
+      }
+
+      .contact-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
       }
 
       .container,
@@ -392,8 +472,9 @@
 
       <nav>
         <a href="#uvod" class="active">Úvod</a>
-        <a href="#zamereni">Zaměření</a>
-        <a href="#kontakt" class="contact-link">Kontakt</a>
+        <a href="#o-me">O mě</a>
+        <a href="#ukazky">Ukázky projektů</a>
+        <a href="#kontakt">Kontakt</a>
       </nav>
     </div>
   </header>
@@ -420,96 +501,142 @@
       </div>
     </section>
 
-    <section class="section" id="zamereni">
+    <section class="section" id="o-me">
+      <div class="container">
+        <div class="section-head-simple">
+          <h2 class="section-title-green">O mě</h2>
+          <p class="about-text">
+            Jsem projektant elektroinstalací se zaměřením na čisté, logické a dobře
+            proveditelné technické řešení. V návrhu kladu důraz na přehlednost dokumentace,
+            návaznost na architekturu stavby a praktické fungování v reálné realizaci.
+            Pracuji na projektech pro rodinné domy, bytové jednotky i další menší a střední stavby.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ukazky">
       <div class="container">
         <div class="section-head">
-          <p class="section-label">Zaměření</p>
+          <p class="section-label">Ukázky projektů</p>
           <p class="section-intro">
-            Návrh elektroinstalací pro obytné i menší provozní stavby.
-            Důraz na srozumitelnou dokumentaci, technickou logiku a řešení,
-            která jsou dobře proveditelná i v praxi.
+            Vybrané ukázky projektů z oblasti elektroinstalací a souvisejících systémů.
+            Přehled realizovaných nebo zpracovaných návrhů s možností stažení ukázkového PDF.
           </p>
         </div>
 
-        <div class="focus-list">
-          <article class="focus-item">
-            <div class="focus-number">01</div>
-            <div class="focus-content">
-              <div class="focus-title-wrap">
-                <h3 class="focus-title">Rodinné domy</h3>
-                <p class="focus-desc">
-                  Projekt elektroinstalace pro novostavby i rekonstrukce se zaměřením
-                  na čisté rozvržení okruhů, rozvaděčů a návaznosti na skutečné užívání domu.
+        <div class="project-list">
+          <article class="project-item">
+            <div class="project-number">01</div>
+            <div class="project-content">
+              <div class="project-title-wrap">
+                <h3 class="project-title">Elektroinstalace průmyslové haly</h3>
+                <p class="project-desc">
+                  Projekt silnoproudých rozvodů, osvětlení, napojení technologií a řešení
+                  rozvaděčů pro provozní objekt s důrazem na přehlednost a provozní logiku.
                 </p>
               </div>
-              <div class="focus-meta">
-                <span>novostavby / rekonstrukce</span>
-                <span>obytné stavby</span>
+              <div class="project-meta">
+                <a class="pdf-link" href="projekty/prumyslova-hala.pdf" target="_blank">Stáhnout PDF</a>
               </div>
             </div>
           </article>
 
-          <article class="focus-item">
-            <div class="focus-number">02</div>
-            <div class="focus-content">
-              <div class="focus-title-wrap">
-                <h3 class="focus-title">Byty a bytové jednotky</h3>
-                <p class="focus-desc">
-                  Návrh rozvodů, zásuvkových a světelných okruhů, koordinace dispozice
-                  a technického řešení podle konkrétního způsobu využití prostoru.
+          <article class="project-item">
+            <div class="project-number">02</div>
+            <div class="project-content">
+              <div class="project-title-wrap">
+                <h3 class="project-title">LPS rodinný dům</h3>
+                <p class="project-desc">
+                  Návrh ochrany před bleskem pro rodinný dům včetně návaznosti na uzemnění,
+                  jímače, svody a celkovou koordinaci s architekturou objektu.
                 </p>
               </div>
-              <div class="focus-meta">
-                <span>interiérové úpravy</span>
-                <span>bytové jednotky</span>
+              <div class="project-meta">
+                <a class="pdf-link" href="projekty/lps-rodinny-dum.pdf" target="_blank">Stáhnout PDF</a>
               </div>
             </div>
           </article>
 
-          <article class="focus-item">
-            <div class="focus-number">03</div>
-            <div class="focus-content">
-              <div class="focus-title-wrap">
-                <h3 class="focus-title">Technické zázemí staveb</h3>
-                <p class="focus-desc">
-                  Řešení rozvaděčů, trasování vedení, technických místností a vazeb
-                  mezi jednotlivými profesemi tak, aby projekt fungoval jako celek.
+          <article class="project-item">
+            <div class="project-number">03</div>
+            <div class="project-content">
+              <div class="project-title-wrap">
+                <h3 class="project-title">Rekonstrukce bytové jednotky</h3>
+                <p class="project-desc">
+                  Úprava elektroinstalace v bytě, nové okruhy, zásuvkové a světelné rozvody
+                  a přizpůsobení technického řešení nové dispozici interiéru.
                 </p>
               </div>
-              <div class="focus-meta">
-                <span>rozvaděče / trasy</span>
-                <span>koordinace profesí</span>
+              <div class="project-meta">
+                <a class="pdf-link" href="projekty/rekonstrukce-bytu.pdf" target="_blank">Stáhnout PDF</a>
               </div>
             </div>
           </article>
 
-          <article class="focus-item">
-            <div class="focus-number">04</div>
-            <div class="focus-content">
-              <div class="focus-title-wrap">
-                <h3 class="focus-title">Dokumentace a úpravy návrhu</h3>
-                <p class="focus-desc">
-                  Zpracování projektové dokumentace, doplnění změn během přípravy i realizace
-                  a úpravy návrhu podle konkrétních požadavků stavby.
+          <article class="project-item">
+            <div class="project-number">04</div>
+            <div class="project-content">
+              <div class="project-title-wrap">
+                <h3 class="project-title">Rozvaděč a napojení technického zázemí</h3>
+                <p class="project-desc">
+                  Návrh rozvaděče, napájecích tras a technického zázemí objektu s důrazem
+                  na logické členění okruhů a srozumitelnou projektovou dokumentaci.
                 </p>
               </div>
-              <div class="focus-meta">
-                <span>projektová dokumentace</span>
-                <span>revize řešení</span>
+              <div class="project-meta">
+                <a class="pdf-link" href="projekty/rozvadec-technicke-zazemi.pdf" target="_blank">Stáhnout PDF</a>
               </div>
             </div>
           </article>
         </div>
       </div>
     </section>
+
+    <section class="section" id="kontakt">
+      <div class="container">
+        <h2 class="contact-title">Kontakt</h2>
+
+        <div class="contact-grid">
+          <div class="contact-label">Kontaktní údaje</div>
+
+          <div class="contact-details">
+            <div class="contact-row">
+              <span>Jméno</span>
+              <span>Jan Rehák</span>
+            </div>
+
+            <div class="contact-row">
+              <span>Adresa</span>
+              <span>Ulice a číslo, Město, PSČ</span>
+            </div>
+
+            <div class="contact-row">
+              <span>Telefon</span>
+              <span><a href="tel:+420123456789">+420 123 456 789</a></span>
+            </div>
+
+            <div class="contact-row">
+              <span>E-mail</span>
+              <span><a href="mailto:info@janrehak.cz">info@janrehak.cz</a></span>
+            </div>
+
+            <div class="contact-row">
+              <span>IČO</span>
+              <span>12345678</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer" id="kontakt">
+  <footer class="footer">
     <div class="container">
       <div class="footer-line"></div>
       <div class="footer-row">
         <div>Jan Rehák — Elektro projekce</div>
-        <div><a href="mailto:info@janrehak.cz">info@janrehak.cz</a></div>
+        <div>Precizní elektro projekce</div>
       </div>
     </div>
   </footer>
