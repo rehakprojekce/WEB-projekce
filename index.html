@@ -65,12 +65,14 @@
 
     .brand {
       display: inline-flex;
-      align-items: center;
-      gap: 10px;
+      align-items: baseline;
+      gap: 9px;
       white-space: nowrap;
-      letter-spacing: 0.14em;
-      font-size: 0.96rem;
-      font-weight: 500;
+      letter-spacing: 0.16em;
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1;
+      text-transform: uppercase;
     }
 
     .brand-main {
@@ -79,13 +81,13 @@
     }
 
     .brand-divider {
-      color: rgba(21, 21, 21, 0.42);
-      font-weight: 500;
+      color: rgba(21, 21, 21, 0.35);
+      font-weight: 300;
     }
 
     .brand-sub {
       color: var(--accent);
-      font-weight: 600;
+      font-weight: 500;
     }
 
     nav {
@@ -125,103 +127,178 @@
     }
 
     .hero {
-      padding: 110px 0 80px;
+      padding: 120px 0 92px;
+      min-height: calc(100vh - var(--header-h));
+      display: flex;
+      align-items: center;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 56px;
-      align-items: end;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 72px;
+      align-items: center;
     }
 
-    .eyebrow {
-      margin: 0 0 22px;
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
+    .hero-signature {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 28px;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--muted);
+      line-height: 1;
+    }
+
+    .hero-signature-main {
+      font-size: clamp(1.35rem, 2vw, 1.8rem);
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .hero-signature-divider {
+      font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+      font-weight: 300;
+      color: rgba(21, 21, 21, 0.34);
+    }
+
+    .hero-signature-sub {
+      font-size: clamp(0.92rem, 1.2vw, 1rem);
+      font-weight: 500;
+      color: var(--accent);
+      transform: translateY(-1px);
     }
 
     .hero h1 {
       margin: 0;
-      max-width: 9ch;
-      font-size: clamp(3rem, 7vw, 6.2rem);
-      line-height: 0.95;
-      font-weight: 600;
-      letter-spacing: -0.05em;
+      max-width: 8.4ch;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.94;
+      font-weight: 560;
+      letter-spacing: -0.055em;
     }
 
     .hero-text {
-      max-width: 38rem;
+      max-width: 37rem;
       margin: 26px 0 0;
-      font-size: 1.08rem;
+      font-size: 1.02rem;
       color: var(--muted);
     }
 
     .hero-side {
-      padding-bottom: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 360px;
     }
 
-    .hero-note {
-      margin: 0;
-      max-width: 28rem;
-      font-size: 0.98rem;
-      color: var(--muted);
+    .logo-mark {
+      width: min(100%, 420px);
+      aspect-ratio: 1 / 1;
+      position: relative;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(31, 79, 70, 0.2);
+      background:
+        linear-gradient(135deg, rgba(31, 79, 70, 0.035), transparent 55%),
+        rgba(251, 249, 244, 0.34);
     }
 
-    .hero-line {
+    .logo-mark::before,
+    .logo-mark::after {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border: 1px solid rgba(21, 21, 21, 0.08);
+    }
+
+    .logo-mark::after {
+      inset: 52px;
+      border-color: rgba(31, 79, 70, 0.22);
+    }
+
+    .logo-inner {
+      position: relative;
+      width: 62%;
+      height: 62%;
+    }
+
+    .logo-line-v {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 1px;
+      height: 100%;
+      background: rgba(21, 21, 21, 0.18);
+      transform: translateX(-50%);
+    }
+
+    .logo-line-h {
+      position: absolute;
+      left: 0;
+      top: 50%;
       width: 100%;
       height: 1px;
-      margin: 0 0 24px;
-      background: linear-gradient(to right, rgba(31, 79, 70, 0.85), rgba(31, 79, 70, 0));
+      background: rgba(21, 21, 21, 0.12);
+      transform: translateY(-50%);
     }
 
-    .section {
-      padding: 110px 0;
-      scroll-margin-top: 110px;
+    .logo-line-d1,
+    .logo-line-d2 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1px;
+      height: 124%;
+      background: rgba(31, 79, 70, 0.22);
+      transform-origin: center;
     }
 
-    .section-head-simple {
-      margin-bottom: 30px;
+    .logo-line-d1 {
+      transform: translate(-50%, -50%) rotate(45deg);
     }
 
-    .section-title-green {
-      margin: 0 0 22px;
-      font-size: clamp(2.5rem, 4.6vw, 4rem);
-      line-height: 0.96;
-      font-weight: 600;
-      letter-spacing: -0.05em;
-      color: var(--accent);
+    .logo-line-d2 {
+      transform: translate(-50%, -50%) rotate(-45deg);
     }
 
-    .about-text {
-      max-width: 56rem;
-      margin: 0;
-      font-size: 1.06rem;
-      color: var(--muted);
-    }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 28px;
-      align-items: start;
-      margin-bottom: 42px;
-    }
-
-    .section-label {
-      margin: 0;
-      font-size: 0.78rem;
+    .logo-jr {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(1.4rem, 2vw, 1.85rem);
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--accent);
+      font-weight: 500;
+      background: rgba(245, 243, 238, 0.9);
+      padding: 10px 14px 10px 18px;
     }
 
+    .section {
+      padding: 132px 0;
+      scroll-margin-top: 120px;
+    }
+
+    .section-head-simple {
+      margin-bottom: 34px;
+    }
+
+    .section-title-green {
+      margin: 0 0 20px;
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      line-height: 0.98;
+      font-weight: 500;
+      letter-spacing: -0.045em;
+      color: var(--accent);
+    }
+
+    .about-text,
     .section-intro {
+      max-width: 56rem;
       margin: 0;
-      max-width: 50rem;
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: var(--muted);
     }
 
@@ -231,9 +308,9 @@
 
     .project-item {
       display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 28px;
-      padding: 28px 0;
+      grid-template-columns: 90px 1fr;
+      gap: 24px;
+      padding: 25px 0;
       border-bottom: 1px solid var(--line);
       transition: transform 0.28s ease;
     }
@@ -243,9 +320,9 @@
     }
 
     .project-number {
-      font-size: 0.86rem;
+      font-size: 0.8rem;
       letter-spacing: 0.16em;
-      color: rgba(21, 21, 21, 0.38);
+      color: rgba(21, 21, 21, 0.36);
       transition: color 0.28s ease;
     }
 
@@ -255,8 +332,8 @@
 
     .project-content {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 28px;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 26px;
       align-items: start;
     }
 
@@ -270,7 +347,7 @@
       content: "";
       position: absolute;
       left: 0;
-      top: 1.05em;
+      top: 0.95em;
       width: 0;
       height: 1px;
       background: var(--accent);
@@ -278,25 +355,25 @@
     }
 
     .project-item:hover .project-title-wrap {
-      padding-left: 34px;
+      padding-left: 28px;
     }
 
     .project-item:hover .project-title-wrap::before {
-      width: 20px;
+      width: 16px;
     }
 
     .project-title {
       margin: 0;
-      font-size: clamp(1.28rem, 1.65vw, 1.8rem);
+      font-size: clamp(1.1rem, 1.35vw, 1.45rem);
       line-height: 1.08;
       font-weight: 500;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.028em;
     }
 
     .project-desc {
-      margin: 10px 0 0;
-      max-width: 34rem;
-      font-size: 0.96rem;
+      margin: 9px 0 0;
+      max-width: 32rem;
+      font-size: 0.9rem;
       color: var(--muted);
     }
 
@@ -311,8 +388,9 @@
       position: relative;
       display: inline-block;
       color: var(--accent);
-      font-size: 0.93rem;
-      font-weight: 600;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
       padding-bottom: 2px;
     }
 
@@ -336,7 +414,6 @@
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0;
       border-top: 1px solid var(--line);
       padding-top: 26px;
       max-width: 42rem;
@@ -388,14 +465,26 @@
     }
 
     @media (max-width: 960px) {
+      .hero {
+        min-height: auto;
+      }
+
       .hero-grid,
-      .section-head,
       .project-content {
         grid-template-columns: 1fr;
       }
 
       .hero h1 {
-        max-width: 12ch;
+        max-width: 11ch;
+      }
+
+      .hero-side {
+        min-height: auto;
+        justify-content: flex-start;
+      }
+
+      .logo-mark {
+        width: min(100%, 320px);
       }
 
       .project-meta {
@@ -421,21 +510,17 @@
       }
 
       .hero {
-        padding-top: 72px;
+        padding: 88px 0 72px;
       }
 
       .section {
-        padding: 92px 0;
+        padding: 100px 0;
         scroll-margin-top: 120px;
       }
 
       .project-item {
         grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
-      .project-number {
-        margin-bottom: 2px;
+        gap: 12px;
       }
 
       .contact-row {
@@ -453,8 +538,8 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a href="#uvod" class="brand" aria-label="Jan Rehak | Elektro projekce">
-        <span class="brand-main">JAN REHAK</span>
+      <a href="#uvod" class="brand" aria-label="Jan Rehák | Elektro projekce">
+        <span class="brand-main">JAN REHÁK</span>
         <span class="brand-divider">|</span>
         <span class="brand-sub">ELEKTRO PROJEKCE</span>
       </a>
@@ -472,7 +557,12 @@
     <section class="hero" id="uvod">
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow">Elektro projekce</p>
+          <div class="hero-signature">
+            <span class="hero-signature-main">JAN REHÁK</span>
+            <span class="hero-signature-divider">|</span>
+            <span class="hero-signature-sub">ELEKTRO PROJEKCE</span>
+          </div>
+
           <h1>Čisté a promyšlené řešení elektroinstalací.</h1>
           <p class="hero-text">
             Projektuji elektroinstalace pro rodinné domy, rekonstrukce i menší stavby
@@ -481,11 +571,15 @@
         </div>
 
         <div class="hero-side">
-          <div class="hero-line"></div>
-          <p class="hero-note">
-            Precizní technický návrh bez vizuálního balastu. Soustředění na podstatu,
-            detail a dobře čitelný výstup.
-          </p>
+          <div class="logo-mark" aria-hidden="true">
+            <div class="logo-inner">
+              <div class="logo-line-v"></div>
+              <div class="logo-line-h"></div>
+              <div class="logo-line-d1"></div>
+              <div class="logo-line-d2"></div>
+              <div class="logo-jr">JR</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -630,32 +724,55 @@
   </footer>
 
   <script>
-    const sections = document.querySelectorAll("main section[id]");
     const navLinks = document.querySelectorAll(".nav-link");
+    const sections = document.querySelectorAll("main section[id]");
 
-    const setActiveLink = () => {
-      const scrollY = window.scrollY + 140;
-      let currentId = "uvod";
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let visibleSectionId = null;
+        let highestRatio = 0;
 
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio > highestRatio) {
+            highestRatio = entry.intersectionRatio;
+            visibleSectionId = entry.target.id;
+          }
+        });
 
-        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-          currentId = section.getAttribute("id");
+        if (visibleSectionId) {
+          navLinks.forEach((link) => {
+            link.classList.toggle(
+              "active",
+              link.getAttribute("href") === `#${visibleSectionId}`
+            );
+          });
         }
-      });
+      },
+      {
+        root: null,
+        rootMargin: "-35% 0px -45% 0px",
+        threshold: [0.15, 0.3, 0.5, 0.7]
+      }
+    );
 
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${currentId}`) {
-          link.classList.add("active");
-        }
-      });
-    };
+    sections.forEach((section) => observer.observe(section));
 
-    window.addEventListener("scroll", setActiveLink);
-    window.addEventListener("load", setActiveLink);
+    function updateActiveOnLoadAndBottom() {
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+
+      if (documentHeight - scrollPosition < 80) {
+        navLinks.forEach((link) => {
+          link.classList.toggle(
+            "active",
+            link.getAttribute("href") === "#kontakt"
+          );
+        });
+      }
+    }
+
+    window.addEventListener("load", updateActiveOnLoadAndBottom);
+    window.addEventListener("scroll", updateActiveOnLoadAndBottom);
   </script>
 </body>
 </html>
