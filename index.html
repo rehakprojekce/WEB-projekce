@@ -110,29 +110,13 @@
       align-items: end;
     }
 
-    .hero-kicker {
-      display: inline-block;
-      margin-bottom: 18px;
-      padding: 8px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--muted);
-      background: rgba(255,255,255,0.45);
+    .hero-intro {
+      min-height: 260px;
+      display: flex;
+      align-items: end;
     }
 
-    .hero h1 {
-      margin: 0 0 20px;
-      font-size: clamp(3rem, 7vw, 6.2rem);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-      max-width: 900px;
-    }
-
-    .hero p {
+    .hero-intro p {
       margin: 0;
       max-width: 720px;
       font-size: 1.1rem;
@@ -203,160 +187,85 @@
       font-size: 1.05rem;
     }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .project-card {
-      min-height: 320px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 26px;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s ease;
-    }
-
-    .project-card:hover,
-    .reference-card:hover,
-    .contact-card:hover {
-      transform: translateY(-3px);
-    }
-
-    .project-index {
-      font-size: 0.86rem;
-      font-weight: 700;
-      color: var(--muted);
-      margin-bottom: 26px;
-    }
-
-    .project-card h3 {
-      margin: 0 0 12px;
-      font-size: 1.55rem;
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-    }
-
-    .project-card p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .project-footer {
-      margin-top: 28px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .references-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .reference-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 26px;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s ease;
-    }
-
-    .reference-card p {
-      margin: 0 0 18px;
-      font-size: 1.02rem;
-    }
-
-    .reference-name {
-      font-weight: 700;
-    }
-
-    .reference-role {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-top: 4px;
-    }
-
-    .contact-wrap {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 20px;
-    }
-
-    .contact-card {
+    .about-box {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 28px;
       box-shadow: var(--shadow);
-      transition: transform 0.2s ease;
+      max-width: 900px;
     }
 
-    .contact-main h3,
-    .contact-info h3 {
-      margin: 0 0 16px;
-      font-size: 1.6rem;
+    .about-box p {
+      margin: 0;
+      color: var(--text);
+      font-size: 1.05rem;
+    }
+
+    .projects-wrap {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .projects-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .projects-table th,
+    .projects-table td {
+      padding: 18px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    .projects-table th {
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      background: var(--bg-2);
+    }
+
+    .projects-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .projects-table a {
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .contact-simple {
+      display: flex;
+      justify-content: center;
+      padding-top: 10px;
+    }
+
+    .contact-box {
+      min-width: min(100%, 560px);
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    .contact-box h2 {
+      margin: 0 0 28px;
+      color: var(--accent);
+      font-size: clamp(2.1rem, 4vw, 3.4rem);
+      line-height: 1;
       letter-spacing: -0.03em;
     }
 
-    .contact-main p {
-      margin: 0 0 22px;
-      color: var(--muted);
-      max-width: 560px;
-    }
-
-    .contact-cta {
-      display: inline-block;
-      padding: 14px 22px;
-      border-radius: 999px;
-      background: var(--text);
-      color: #fff;
-      font-weight: 700;
-      transition: 0.2s ease;
-    }
-
-    .contact-cta:hover {
-      opacity: 0.92;
-    }
-
-    .contact-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .contact-item {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .contact-item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .contact-label {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      margin-bottom: 5px;
-    }
-
-    .contact-value {
+    .contact-lines {
+      font-family: "Courier New", Courier, monospace;
       font-size: 1.05rem;
-      font-weight: 700;
-      word-break: break-word;
+      line-height: 1.9;
+      color: var(--text);
     }
 
     .footer {
@@ -367,15 +276,8 @@
     }
 
     @media (max-width: 980px) {
-      .hero-grid,
-      .projects-grid,
-      .references-grid,
-      .contact-wrap {
+      .hero-grid {
         grid-template-columns: 1fr;
-      }
-
-      .hero h1 {
-        max-width: 100%;
       }
     }
 
@@ -403,8 +305,43 @@
         padding: 28px 0 72px;
       }
 
-      .hero h1 {
-        font-size: clamp(2.5rem, 13vw, 4.2rem);
+      .hero-intro {
+        min-height: auto;
+      }
+
+      .projects-table,
+      .projects-table tbody,
+      .projects-table tr,
+      .projects-table th,
+      .projects-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .projects-table thead {
+        display: none;
+      }
+
+      .projects-table tr {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .projects-table tr:last-child {
+        border-bottom: none;
+      }
+
+      .projects-table td {
+        border-bottom: none;
+        padding: 10px 18px;
+      }
+
+      .projects-table td:first-child {
+        padding-top: 18px;
+        font-weight: 700;
+      }
+
+      .projects-table td:last-child {
+        padding-bottom: 18px;
       }
     }
   </style>
@@ -413,23 +350,21 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#domu" class="logo">Jan Rehák | Elektro projekce</a>
+      <a href="#uvod" class="logo">Jan Rehák | Elektro projekce</a>
 
       <nav class="nav">
-        <a href="#domu" class="nav-link active">Domů</a>
+        <a href="#uvod" class="nav-link active">Úvod</a>
+        <a href="#o-me" class="nav-link">O mě</a>
         <a href="#ukazky" class="nav-link">Ukázky projektů</a>
-        <a href="#reference" class="nav-link">Reference</a>
         <a href="#kontakt" class="nav-link">Kontakt</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section id="domu" class="hero">
+    <section id="uvod" class="hero">
       <div class="container hero-grid">
-        <div>
-          <div class="hero-kicker">Elektro projekce</div>
-          <h1>Elektroprojekce</h1>
+        <div class="hero-intro">
           <p>
             Projektová dokumentace elektroinstalací s důrazem na přehlednost,
             technickou logiku a použitelný výstup pro realizaci.
@@ -439,12 +374,37 @@
         <aside class="hero-side">
           <div class="hero-side-title">Zaměření</div>
           <ul>
-            <li>Rodinné domy</li>
-            <li>Rekonstrukce bytů</li>
-            <li>Menší provozní prostory</li>
-            <li>Technická dokumentace elektro</li>
+            <li>Silnoproudé rozvody</li>
+            <li>Hromosvody a uzemnění</li>
+            <li>Fotovoltaika</li>
+            <li>Světelně-technické výpočty</li>
+            <li>Veřejné osvětlení a pasportizace</li>
+            <li>Zpracování protokolu o určení vnějších vlivů</li>
+            <li>Autorský dozor</li>
           </ul>
         </aside>
+      </div>
+    </section>
+
+    <section id="o-me" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">O mě</div>
+          <h2>Technický a přehledný přístup</h2>
+          <p>
+            Zpracovávám projektovou dokumentaci silnoproudých elektroinstalací
+            pro rodinné domy, bytové objekty, průmyslové a provozní stavby.
+            Důraz kladu na technickou správnost, čitelnost dokumentace
+            a použitelnost při samotné realizaci.
+          </p>
+        </div>
+
+        <div class="about-box">
+          <p>
+            Sem si můžeš doplnit vlastní představení, zaměření, zkušenosti,
+            region působnosti a typický rozsah zakázek.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -452,137 +412,54 @@
       <div class="container">
         <div class="section-header">
           <div class="section-label">Ukázky projektů</div>
-          <h2>Typy zakázek</h2>
+          <h2>Přehled vybraných zakázek</h2>
           <p>
-            Sem můžeš později doplnit skutečné ukázky, fotografie, výřezy výkresů
-            nebo stručný popis konkrétních realizací.
+            Do odkazu dej PDF soubor uložený v repozitáři, například do složky <strong>pdf</strong>.
           </p>
         </div>
 
-        <div class="projects-grid">
-          <article class="project-card">
-            <div>
-              <div class="project-index">01</div>
-              <h3>Novostavba rodinného domu</h3>
-              <p>
-                Kompletní návrh elektroinstalace od základního rozmístění prvků
-                až po logické členění okruhů a návrh rozvaděče.
-              </p>
-            </div>
-            <div class="project-footer">Rodinné bydlení</div>
-          </article>
-
-          <article class="project-card">
-            <div>
-              <div class="project-index">02</div>
-              <h3>Rekonstrukce bytu</h3>
-              <p>
-                Přizpůsobení elektroinstalace novému dispozičnímu řešení
-                a moderním požadavkům na provoz domácnosti.
-              </p>
-            </div>
-            <div class="project-footer">Bytové rekonstrukce</div>
-          </article>
-
-          <article class="project-card">
-            <div>
-              <div class="project-index">03</div>
-              <h3>Menší komerční prostor</h3>
-              <p>
-                Přehledná technická dokumentace pro kanceláře, provozovny
-                a další menší objekty s běžným provozem.
-              </p>
-            </div>
-            <div class="project-footer">Provozní objekty</div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="reference" class="section">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-label">Reference</div>
-          <h2>Zpětná vazba klientů</h2>
-          <p>
-            Tady můžeš uvést krátké citace klientů nebo stručné shrnutí hotových zakázek.
-          </p>
-        </div>
-
-        <div class="references-grid">
-          <article class="reference-card">
-            <p>
-              „Spolupráce byla rychlá, věcná a dokumentace byla dobře použitelná
-              při samotné realizaci.“
-            </p>
-            <div class="reference-name">Investor rodinného domu</div>
-            <div class="reference-role">Soukromý klient</div>
-          </article>
-
-          <article class="reference-card">
-            <p>
-              „Oceňujeme přehledné řešení, jasnou komunikaci a technický přístup
-              odpovídající skutečným potřebám stavby.“
-            </p>
-            <div class="reference-name">Rekonstrukce bytu</div>
-            <div class="reference-role">Soukromý klient</div>
-          </article>
-
-          <article class="reference-card">
-            <p>
-              „Termíny byly dodrženy a výstup měl čistou a srozumitelnou podobu,
-              se kterou se dobře pracovalo.“
-            </p>
-            <div class="reference-name">Menší provozovna</div>
-            <div class="reference-role">Firemní zákazník</div>
-          </article>
+        <div class="projects-wrap">
+          <table class="projects-table">
+            <thead>
+              <tr>
+                <th>Popis</th>
+                <th>Odkaz</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Rozvody v průmyslové hale</td>
+                <td><a href="pdf/prumyslova-hala.pdf" target="_blank" rel="noopener">Zobrazit PDF</a></td>
+              </tr>
+              <tr>
+                <td>Elektroinstalace rodinného domu</td>
+                <td><a href="pdf/rodinny-dum.pdf" target="_blank" rel="noopener">Zobrazit PDF</a></td>
+              </tr>
+              <tr>
+                <td>Rekonstrukce bytového objektu</td>
+                <td><a href="pdf/bytovy-objekt.pdf" target="_blank" rel="noopener">Zobrazit PDF</a></td>
+              </tr>
+              <tr>
+                <td>Veřejné osvětlení obce</td>
+                <td><a href="pdf/verejne-osvetleni.pdf" target="_blank" rel="noopener">Zobrazit PDF</a></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
 
     <section id="kontakt" class="section">
       <div class="container">
-        <div class="section-header">
-          <div class="section-label">Kontakt</div>
-          <h2>Ozvěte se mi</h2>
-          <p>
-            Pokud řešíte projekt elektroinstalace pro novostavbu, rekonstrukci
-            nebo menší komerční prostor, napište nebo zavolejte.
-          </p>
-        </div>
-
-        <div class="contact-wrap">
-          <div class="contact-card contact-main">
-            <h3>Nezávazná poptávka</h3>
-            <p>
-              Stačí poslat základní informace o projektu, lokalitu a přibližný rozsah.
-              Ozvu se zpět s dalším postupem.
-            </p>
-            <a class="contact-cta" href="mailto:tvuj@email.cz">Napsat e-mail</a>
-          </div>
-
-          <div class="contact-card contact-info">
-            <h3>Kontaktní údaje</h3>
-            <div class="contact-list">
-              <div class="contact-item">
-                <span class="contact-label">Jméno</span>
-                <div class="contact-value">Jan Rehák</div>
-              </div>
-
-              <div class="contact-item">
-                <span class="contact-label">E-mail</span>
-                <div class="contact-value">tvuj@email.cz</div>
-              </div>
-
-              <div class="contact-item">
-                <span class="contact-label">Telefon</span>
-                <div class="contact-value">+420 123 456 789</div>
-              </div>
-
-              <div class="contact-item">
-                <span class="contact-label">Lokalita</span>
-                <div class="contact-value">Česká republika</div>
-              </div>
+        <div class="contact-simple">
+          <div class="contact-box">
+            <h2>Kontakt</h2>
+            <div class="contact-lines">
+              <div>Jan Rehák</div>
+              <div>Doplň adresu</div>
+              <div>tvuj@email.cz</div>
+              <div>+420 123 456 789</div>
+              <div>IČO: 12345678</div>
             </div>
           </div>
         </div>
