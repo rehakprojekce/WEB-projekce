@@ -6,20 +6,18 @@
   <title>Jan Rehák | Elektro projekce</title>
   <style>
     :root {
-      --bg: #0f172a;
-      --bg-soft: #111827;
-      --card: #ffffff;
+      --bg: #f8fafc;
+      --bg-soft: #ffffff;
+      --section: #f1f5f9;
       --text: #0f172a;
-      --text-light: #475569;
-      --line: #e2e8f0;
-      --accent: #2563eb;
-      --accent-2: #1d4ed8;
-      --white: #ffffff;
-      --section-bg: #f8fafc;
-      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --muted: #475569;
+      --line: #dbe3ec;
+      --accent: #1d4ed8;
+      --accent-soft: #dbeafe;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
       --radius: 18px;
-      --max: 1150px;
-      --header-h: 76px;
+      --max: 1160px;
+      --header-h: 78px;
     }
 
     * {
@@ -34,13 +32,8 @@
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
-      background: var(--white);
+      background: var(--bg);
       line-height: 1.6;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
     }
 
     a {
@@ -53,14 +46,18 @@
       margin: 0 auto;
     }
 
+    section {
+      scroll-margin-top: calc(var(--header-h) + 24px);
+    }
+
     .site-header {
       position: sticky;
       top: 0;
       z-index: 1000;
+      background: rgba(248, 250, 252, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
       height: var(--header-h);
-      background: rgba(15, 23, 42, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
     .header-inner {
@@ -72,93 +69,77 @@
     }
 
     .logo {
-      color: var(--white);
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 700;
       white-space: nowrap;
+      color: var(--text);
     }
 
     .logo span {
-      color: #93c5fd;
+      color: var(--accent);
     }
 
     .nav {
       display: flex;
-      align-items: center;
       gap: 10px;
       flex-wrap: wrap;
+      align-items: center;
     }
 
     .nav a {
-      color: rgba(255,255,255,0.86);
-      padding: 10px 14px;
-      border-radius: 10px;
-      font-size: 0.96rem;
+      color: var(--muted);
       font-weight: 600;
-      transition: 0.25s ease;
+      font-size: 0.96rem;
+      padding: 10px 12px;
       border-bottom: 2px solid transparent;
+      transition: 0.22s ease;
     }
 
     .nav a:hover {
-      color: var(--white);
-      background: rgba(255,255,255,0.07);
+      color: var(--text);
     }
 
     .nav a.active {
-      color: var(--white);
-      border-bottom-color: #60a5fa;
-      background: rgba(255,255,255,0.08);
-    }
-
-    section {
-      scroll-margin-top: calc(var(--header-h) + 18px);
+      color: var(--text);
+      border-bottom-color: var(--accent);
     }
 
     .hero {
-      min-height: calc(100vh - var(--header-h));
-      display: flex;
-      align-items: center;
+      padding: 90px 0 70px;
       background:
-        linear-gradient(rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.72)),
-        linear-gradient(135deg, #1e293b, #0f172a);
-      color: var(--white);
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
     }
 
     .hero-grid {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap: 36px;
+      gap: 32px;
       align-items: center;
-      padding: 70px 0;
     }
 
-    .hero-text h1 {
-      font-size: clamp(2.3rem, 5vw, 4.4rem);
-      line-height: 1.05;
-      margin: 0 0 18px;
-    }
-
-    .hero-text p {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.86);
-      max-width: 700px;
-      margin: 0 0 28px;
-    }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-
-    .badge {
-      padding: 10px 14px;
-      border: 1px solid rgba(255,255,255,0.16);
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      background: var(--accent-soft);
+      color: var(--accent);
       border-radius: 999px;
-      color: rgba(255,255,255,0.9);
-      font-size: 0.95rem;
-      background: rgba(255,255,255,0.06);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 700px;
     }
 
     .hero-actions {
@@ -172,70 +153,73 @@
       padding: 14px 22px;
       border-radius: 12px;
       font-weight: 700;
-      transition: 0.25s ease;
+      transition: 0.22s ease;
     }
 
     .btn-primary {
       background: var(--accent);
-      color: var(--white);
+      color: #fff;
     }
 
     .btn-primary:hover {
-      background: var(--accent-2);
       transform: translateY(-1px);
+      filter: brightness(0.96);
     }
 
     .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.18);
-      color: var(--white);
-      background: rgba(255,255,255,0.06);
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--line);
     }
 
     .btn-secondary:hover {
-      background: rgba(255,255,255,0.11);
+      background: #f8fafc;
     }
 
     .hero-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: #fff;
+      border: 1px solid var(--line);
       border-radius: 22px;
       padding: 28px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.18);
+      box-shadow: var(--shadow);
     }
 
     .hero-card h3 {
-      margin-top: 0;
-      margin-bottom: 16px;
-      font-size: 1.2rem;
+      margin: 0 0 18px;
+      font-size: 1.15rem;
     }
 
-    .hero-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .hero-points {
+      display: grid;
+      gap: 14px;
     }
 
-    .hero-list li {
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.88);
+    .hero-point {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
     }
 
-    .hero-list li:last-child {
+    .hero-point:last-child {
       border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .hero-point strong {
+      display: block;
+      margin-bottom: 4px;
     }
 
     .section {
-      padding: 95px 0;
+      padding: 88px 0;
     }
 
     .section-alt {
-      background: var(--section-bg);
+      background: #ffffff;
     }
 
     .section-head {
       max-width: 760px;
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
 
     .section-head h2 {
@@ -246,8 +230,8 @@
 
     .section-head p {
       margin: 0;
-      color: var(--text-light);
-      font-size: 1.05rem;
+      color: var(--muted);
+      font-size: 1.03rem;
     }
 
     .projects-grid,
@@ -258,81 +242,80 @@
     }
 
     .card {
-      background: var(--card);
+      background: #fff;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 26px;
       box-shadow: var(--shadow);
-      transition: 0.25s ease;
+      transition: 0.22s ease;
     }
 
     .card:hover {
       transform: translateY(-4px);
     }
 
-    .project-top {
-      width: 56px;
-      height: 56px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: #dbeafe;
-      color: #1d4ed8;
+    .project-badge {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
       font-weight: 700;
-      margin-bottom: 18px;
-      font-size: 1.05rem;
+      font-size: 0.9rem;
     }
 
     .card h3 {
       margin: 0 0 12px;
-      font-size: 1.2rem;
+      font-size: 1.16rem;
     }
 
     .card p {
-      margin: 0 0 18px;
-      color: var(--text-light);
+      margin: 0 0 16px;
+      color: var(--muted);
     }
 
     .card ul {
       margin: 0;
       padding-left: 18px;
-      color: var(--text-light);
+      color: var(--muted);
     }
 
-    .reference-quote {
-      font-size: 1rem;
+    .ref-text {
+      margin: 0 0 18px;
       color: var(--text);
-      margin-bottom: 16px;
     }
 
-    .reference-name {
+    .ref-name {
       font-weight: 700;
       margin-bottom: 4px;
     }
 
-    .reference-role {
-      color: var(--text-light);
+    .ref-role {
       font-size: 0.95rem;
+      color: var(--muted);
     }
 
-    .contact-wrap {
+    .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 0.9fr 1.1fr;
       gap: 28px;
       align-items: start;
     }
 
-    .contact-box {
-      background: var(--card);
+    .contact-card,
+    .form-card {
+      background: #fff;
       border: 1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius: 22px;
       padding: 28px;
       box-shadow: var(--shadow);
     }
 
-    .contact-box h3 {
+    .contact-card h3,
+    .form-card h3 {
       margin-top: 0;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .contact-list {
@@ -350,7 +333,7 @@
     .contact-label {
       display: block;
       font-size: 0.9rem;
-      color: var(--text-light);
+      color: var(--muted);
       margin-bottom: 4px;
     }
 
@@ -359,34 +342,61 @@
       word-break: break-word;
     }
 
-    .contact-note {
-      color: var(--text-light);
-      margin-top: 18px;
-      margin-bottom: 0;
+    .form-row {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .form-row label {
+      font-weight: 700;
+      font-size: 0.96rem;
+    }
+
+    .form-row input,
+    .form-row textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 14px;
+      font: inherit;
+      color: var(--text);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-row input:focus,
+    .form-row textarea:focus {
+      border-color: #93c5fd;
+      box-shadow: 0 0 0 4px rgba(147, 197, 253, 0.22);
+    }
+
+    .form-row textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-note {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
     }
 
     .footer {
       padding: 26px 0 40px;
-      background: #fff;
-      border-top: 1px solid var(--line);
-      color: var(--text-light);
+      border-top: 1px solid rgba(15, 23, 42, 0.08);
+      color: var(--muted);
       font-size: 0.95rem;
+      background: #fff;
     }
 
     @media (max-width: 980px) {
       .hero-grid,
       .projects-grid,
       .references-grid,
-      .contact-wrap {
+      .contact-grid {
         grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: auto;
-      }
-
-      .hero-grid {
-        padding: 56px 0;
       }
     }
 
@@ -397,32 +407,21 @@
 
       .site-header {
         height: auto;
-        min-height: var(--header-h);
       }
 
       .header-inner {
+        min-height: var(--header-h);
         padding: 14px 0;
-        align-items: flex-start;
         flex-direction: column;
+        align-items: flex-start;
       }
 
-      .nav {
-        width: 100%;
-        gap: 8px;
-      }
-
-      .nav a {
-        padding: 9px 12px;
-        font-size: 0.93rem;
+      .hero {
+        padding: 64px 0 48px;
       }
 
       .section {
         padding: 72px 0;
-      }
-
-      .hero-text p,
-      .section-head p {
-        font-size: 1rem;
       }
     }
   </style>
@@ -433,7 +432,7 @@
     <div class="container header-inner">
       <a href="#domu" class="logo">Jan <span>Rehák</span> | Elektro projekce</a>
 
-      <nav class="nav" id="mainNav">
+      <nav class="nav">
         <a href="#domu" class="nav-link active">Domů</a>
         <a href="#ukazky" class="nav-link">Ukázky projektů</a>
         <a href="#reference" class="nav-link">Reference</a>
@@ -445,34 +444,40 @@
   <main>
     <section id="domu" class="hero">
       <div class="container hero-grid">
-        <div class="hero-text">
-          <h1>Elektro projekce přehledně, čistě a spolehlivě</h1>
+        <div>
+          <div class="eyebrow">Elektro projekce</div>
+          <h1>Jednoduché a přehledné řešení elektroinstalace pro váš projekt</h1>
           <p>
-            Zajišťuji zpracování projektové dokumentace elektroinstalací
-            pro rodinné domy, bytové objekty, rekonstrukce i menší komerční prostory.
-            Důraz kladu na technickou správnost, přehlednost a praktické řešení.
+            Zpracování projektové dokumentace elektroinstalací pro rodinné domy,
+            rekonstrukce bytů i menší komerční prostory. Důraz na čisté řešení,
+            technickou logiku a srozumitelné výstupy.
           </p>
 
-          <div class="hero-badges">
-            <div class="badge">Rodinné domy</div>
-            <div class="badge">Rekonstrukce</div>
-            <div class="badge">Technická dokumentace</div>
-          </div>
-
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#kontakt">Nezávazná poptávka</a>
-            <a class="btn btn-secondary" href="#ukazky">Zobrazit ukázky</a>
+            <a href="#kontakt" class="btn btn-primary">Nezávazná poptávka</a>
+            <a href="#ukazky" class="btn btn-secondary">Zobrazit ukázky</a>
           </div>
         </div>
 
         <div class="hero-card">
-          <h3>Co nabízím</h3>
-          <ul class="hero-list">
-            <li>Projekt elektroinstalace pro novostavby a rekonstrukce</li>
-            <li>Řešení rozvaděčů, okruhů a technické návaznosti</li>
-            <li>Přehledné podklady pro realizaci i komunikaci s profesemi</li>
-            <li>Individuální přístup podle typu stavby a rozsahu zakázky</li>
-          </ul>
+          <h3>Co můžete očekávat</h3>
+
+          <div class="hero-points">
+            <div class="hero-point">
+              <strong>Čistá dokumentace</strong>
+              Přehledné podklady pro realizaci i koordinaci na stavbě.
+            </div>
+
+            <div class="hero-point">
+              <strong>Praktický návrh</strong>
+              Řešení s ohledem na dispozici, použití a budoucí provoz.
+            </div>
+
+            <div class="hero-point">
+              <strong>Individuální přístup</strong>
+              Každý projekt se přizpůsobí rozsahu a typu stavby.
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -482,51 +487,51 @@
         <div class="section-head">
           <h2>Ukázky projektů</h2>
           <p>
-            Níže jsou příklady typů zakázek, které lze na webu prezentovat.
-            Texty si později upravíš podle skutečných projektů.
+            Tuto sekci si později můžeš doplnit o skutečné realizace, fotografie,
+            výřezy výkresů nebo stručný popis rozsahu prací.
           </p>
         </div>
 
         <div class="projects-grid">
           <article class="card">
-            <div class="project-top">RD</div>
-            <h3>Rodinný dům – novostavba</h3>
+            <div class="project-badge">Rodinný dům</div>
+            <h3>Novostavba rodinného domu</h3>
             <p>
-              Kompletní návrh silnoproudé elektroinstalace včetně rozmístění zásuvek,
-              osvětlení, rozvaděče a návazností na další technologie objektu.
+              Kompletní řešení elektroinstalace pro novostavbu včetně světelných,
+              zásuvkových a technologických okruhů.
             </p>
             <ul>
+              <li>návrh rozvaděče</li>
               <li>návrh okruhů</li>
-              <li>koordinace dispozice</li>
-              <li>přehledná dokumentace</li>
+              <li>koordinace s dispozicí domu</li>
             </ul>
           </article>
 
           <article class="card">
-            <div class="project-top">RE</div>
+            <div class="project-badge">Rekonstrukce</div>
             <h3>Rekonstrukce bytu</h3>
             <p>
-              Úprava elektroinstalace pro modernizaci interiéru s důrazem
-              na praktické rozmístění prvků a bezpečné technické řešení.
+              Návrh úprav elektroinstalace při modernizaci bytu s důrazem
+              na nové rozvržení místností a uživatelský komfort.
             </p>
             <ul>
               <li>nové trasy vedení</li>
-              <li>úpravy rozvaděče</li>
-              <li>řešení podle dispozice</li>
+              <li>úprava stávajících okruhů</li>
+              <li>přehledné technické řešení</li>
             </ul>
           </article>
 
           <article class="card">
-            <div class="project-top">KO</div>
-            <h3>Menší komerční prostor</h3>
+            <div class="project-badge">Komerce</div>
+            <h3>Menší provozní prostor</h3>
             <p>
-              Projekt elektroinstalace pro kanceláře, provozovny a menší objekty
-              s ohledem na provoz, přehlednost a budoucí údržbu.
+              Dokumentace elektroinstalace pro kanceláře, provozovny
+              a menší komerční objekty.
             </p>
             <ul>
-              <li>zásuvkové a světelné okruhy</li>
-              <li>technické zázemí</li>
-              <li>logická struktura řešení</li>
+              <li>silnoproudé rozvody</li>
+              <li>logické členění okruhů</li>
+              <li>podklady pro realizaci</li>
             </ul>
           </article>
         </div>
@@ -538,36 +543,36 @@
         <div class="section-head">
           <h2>Reference</h2>
           <p>
-            Sem můžeš dát skutečné reference klientů. Zatím jsou zde ukázkové texty.
+            Zde mohou být krátké citace klientů nebo stručné shrnutí dokončených zakázek.
           </p>
         </div>
 
         <div class="references-grid">
           <article class="card">
-            <p class="reference-quote">
-              „Spolupráce byla věcná, rychlá a bez zbytečných komplikací.
-              Dokumentace byla přehledná a dobře použitelná při realizaci.“
+            <p class="ref-text">
+              „Spolupráce byla rychlá, přehledná a bez zbytečných komplikací.
+              Výstupy byly srozumitelné a dobře použitelné při realizaci.“
             </p>
-            <div class="reference-name">Investor rodinného domu</div>
-            <div class="reference-role">Soukromý klient</div>
+            <div class="ref-name">Investor rodinného domu</div>
+            <div class="ref-role">Soukromý klient</div>
           </article>
 
           <article class="card">
-            <p class="reference-quote">
-              „Oceňujeme technický přístup a schopnost navrhnout řešení,
-              které odpovídalo skutečným potřebám stavby.“
+            <p class="ref-text">
+              „Oceňujeme technický přístup a návrh, který odpovídal reálnému provozu
+              i požadavkům stavby.“
             </p>
-            <div class="reference-name">Rekonstrukce bytové jednotky</div>
-            <div class="reference-role">Soukromý klient</div>
+            <div class="ref-name">Rekonstrukce bytu</div>
+            <div class="ref-role">Soukromý klient</div>
           </article>
 
           <article class="card">
-            <p class="reference-quote">
-              „Komunikace byla jasná, termíny dodržené a výstupy přehledné.
-              Doporučujeme pro menší i střední projekty.“
+            <p class="ref-text">
+              „Komunikace byla věcná, termíny dodrženy a dokumentace zpracována
+              v přehledné podobě.“
             </p>
-            <div class="reference-name">Menší provozovna</div>
-            <div class="reference-role">Firemní zákazník</div>
+            <div class="ref-name">Menší provozovna</div>
+            <div class="ref-role">Firemní zákazník</div>
           </article>
         </div>
       </div>
@@ -578,14 +583,14 @@
         <div class="section-head">
           <h2>Kontakt</h2>
           <p>
-            Máš zájem o spolupráci nebo chceš nezávazně probrat rozsah projektu?
-            Ozvi se.
+            Napište základní informace o projektu a ozvu se zpět.
           </p>
         </div>
 
-        <div class="contact-wrap">
-          <div class="contact-box">
+        <div class="contact-grid">
+          <div class="contact-card">
             <h3>Kontaktní údaje</h3>
+
             <div class="contact-list">
               <div class="contact-item">
                 <span class="contact-label">Jméno</span>
@@ -609,27 +614,31 @@
             </div>
           </div>
 
-          <div class="contact-box">
-            <h3>Jak probíhá spolupráce</h3>
-            <div class="contact-list">
-              <div class="contact-item">
-                <span class="contact-label">1. Poptávka</span>
-                <div class="contact-value">Pošleš základní informace o projektu.</div>
+          <div class="form-card">
+            <h3>Napište mi</h3>
+
+            <form id="contactForm">
+              <div class="form-row">
+                <label for="name">Jméno</label>
+                <input type="text" id="name" name="name" placeholder="Vaše jméno" required>
               </div>
 
-              <div class="contact-item">
-                <span class="contact-label">2. Upřesnění</span>
-                <div class="contact-value">Domluvíme rozsah, termín a potřebné podklady.</div>
+              <div class="form-row">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="vas@email.cz" required>
               </div>
 
-              <div class="contact-item">
-                <span class="contact-label">3. Zpracování</span>
-                <div class="contact-value">Připravím projektovou dokumentaci dle dohody.</div>
+              <div class="form-row">
+                <label for="message">Zpráva</label>
+                <textarea id="message" name="message" placeholder="Stručně popište váš projekt..." required></textarea>
               </div>
-            </div>
 
-            <p class="contact-note">
-              Doplň si sem reálný e-mail, telefon a případně město nebo region.
+              <button type="submit" class="btn btn-primary">Odeslat zprávu</button>
+            </form>
+
+            <p class="form-note">
+              Formulář funguje bez backendu: po kliknutí se otevře váš e-mailový klient
+              s předvyplněnou zprávou.
             </p>
           </div>
         </div>
@@ -649,7 +658,7 @@
 
     function setActiveLink() {
       const scrollY = window.pageYOffset;
-      const offset = 140;
+      const offset = 160;
 
       sections.forEach((section) => {
         const sectionTop = section.offsetTop - offset;
@@ -666,6 +675,24 @@
 
     window.addEventListener("scroll", setActiveLink);
     window.addEventListener("load", setActiveLink);
+
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const to = "tvuj@email.cz";
+      const subject = encodeURIComponent("Poptávka z webu");
+      const body = encodeURIComponent(
+        "Jméno: " + name + "\n" +
+        "E-mail: " + email + "\n\n" +
+        "Zpráva:\n" + message
+      );
+
+      window.location.href = "mailto:" + to + "?subject=" + subject + "&body=" + body;
+    });
   </script>
 
 </body>
