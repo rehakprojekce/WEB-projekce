@@ -30,10 +30,10 @@
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(to bottom, var(--bg), var(--bg-2));
       color: var(--text);
-      background: var(--bg);
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
     a {
@@ -41,460 +41,477 @@
       text-decoration: none;
     }
 
-    .container {
-      width: min(100% - 40px, var(--max));
-      margin: 0 auto;
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    section {
-      scroll-margin-top: calc(var(--header-h) + 22px);
+    .container {
+      width: min(100% - 48px, var(--max));
+      margin: 0 auto;
     }
 
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 100;
       height: var(--header-h);
-      background: rgba(245, 243, 238, 0.88);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(21, 21, 21, 0.08);
+      display: flex;
+      align-items: center;
+      background: rgba(245, 243, 238, 0.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(216, 209, 199, 0.7);
     }
 
     .header-inner {
-      height: 100%;
+      width: min(100% - 48px, var(--max));
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 28px;
     }
 
-    .logo {
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 0.14em;
+      font-size: 0.8rem;
       white-space: nowrap;
     }
 
-    .nav {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .nav a {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--muted);
-      padding: 8px 0;
-      border-bottom: 2px solid transparent;
-      transition: 0.2s ease;
-    }
-
-    .nav a:hover,
-    .nav a.active {
+    .brand-main {
       color: var(--text);
-      border-bottom-color: var(--text);
+      font-weight: 600;
+    }
+
+    .brand-divider {
+      color: rgba(21, 21, 21, 0.35);
+    }
+
+    .brand-sub {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      position: relative;
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: color 0.25s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--text);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      transform: scaleX(1);
+    }
+
+    .contact-link {
+      color: var(--accent);
+      font-weight: 600;
     }
 
     .hero {
-      padding: 80px 0 60px;
-      background: var(--bg);
+      padding: 92px 0 48px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 28px;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 56px;
       align-items: end;
     }
 
-    .hero-intro {
-      min-height: 260px;
-      display: flex;
-      align-items: end;
+    .eyebrow {
+      margin: 0 0 22px;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
 
-    .hero-intro p {
+    .hero h1 {
       margin: 0;
-      max-width: 720px;
-      font-size: 1.1rem;
+      max-width: 9ch;
+      font-size: clamp(3rem, 7vw, 6.2rem);
+      line-height: 0.95;
+      font-weight: 600;
+      letter-spacing: -0.05em;
+    }
+
+    .hero-text {
+      max-width: 38rem;
+      margin: 26px 0 0;
+      font-size: 1.08rem;
       color: var(--muted);
     }
 
     .hero-side {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
+      padding-bottom: 8px;
     }
 
-    .hero-side-title {
-      margin: 0 0 18px;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+    .hero-note {
+      margin: 0;
+      max-width: 28rem;
+      font-size: 0.98rem;
       color: var(--muted);
     }
 
-    .hero-side ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .hero-side li {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--line);
-      font-weight: 700;
-    }
-
-    .hero-side li:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
+    .hero-line {
+      width: 100%;
+      height: 1px;
+      margin: 0 0 24px;
+      background: linear-gradient(to right, rgba(31, 79, 70, 0.85), rgba(31, 79, 70, 0));
     }
 
     .section {
-      padding: 42px 0 96px;
+      padding: 72px 0;
     }
 
-    .section-header {
-      margin-bottom: 28px;
+    .section-head {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 36px;
     }
 
     .section-label {
-      margin-bottom: 10px;
-      font-size: 0.82rem;
-      font-weight: 700;
+      margin: 0;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
       color: var(--muted);
     }
 
-    .section-header h2 {
-      margin: 0 0 14px;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      line-height: 1;
-      letter-spacing: -0.03em;
-    }
-
-    .section-header p {
+    .section-intro {
       margin: 0;
-      max-width: 760px;
+      max-width: 50rem;
+      font-size: 1.05rem;
       color: var(--muted);
-      font-size: 1.05rem;
     }
 
-    .about-box {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow);
-      max-width: 900px;
+    .focus-list {
+      border-top: 1px solid var(--line);
     }
 
-    .about-box p {
-      margin: 0;
-      color: var(--text);
-      font-size: 1.05rem;
-    }
-
-    .projects-wrap {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .projects-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .projects-table th,
-    .projects-table td {
-      padding: 18px 20px;
-      text-align: left;
+    .focus-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 28px;
+      padding: 30px 0;
       border-bottom: 1px solid var(--line);
-      vertical-align: top;
+      transition: transform 0.28s ease, padding-left 0.28s ease;
     }
 
-    .projects-table th {
-      font-size: 0.92rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--muted);
-      background: var(--bg-2);
+    .focus-item:hover {
+      transform: translateX(8px);
     }
 
-    .projects-table tr:last-child td {
-      border-bottom: none;
+    .focus-number {
+      font-size: 0.9rem;
+      letter-spacing: 0.16em;
+      color: rgba(21, 21, 21, 0.38);
+      transition: color 0.28s ease;
     }
 
-    .projects-table a {
-      font-weight: 700;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .contact-simple {
-      display: flex;
-      justify-content: center;
-      padding-top: 10px;
-    }
-
-    .contact-box {
-      min-width: min(100%, 560px);
-      text-align: center;
-      padding: 20px 10px;
-    }
-
-    .contact-box h2 {
-      margin: 0 0 28px;
+    .focus-item:hover .focus-number {
       color: var(--accent);
-      font-size: clamp(2.1rem, 4vw, 3.4rem);
-      line-height: 1;
+    }
+
+    .focus-content {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .focus-title-wrap {
+      position: relative;
+      padding-left: 0;
+      transition: padding-left 0.28s ease;
+    }
+
+    .focus-title-wrap::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1.1em;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.28s ease;
+    }
+
+    .focus-item:hover .focus-title-wrap {
+      padding-left: 36px;
+    }
+
+    .focus-item:hover .focus-title-wrap::before {
+      width: 22px;
+    }
+
+    .focus-title {
+      margin: 0;
+      font-size: clamp(1.5rem, 2vw, 2.2rem);
+      line-height: 1.06;
+      font-weight: 500;
       letter-spacing: -0.03em;
     }
 
-    .contact-lines {
-      font-family: "Courier New", Courier, monospace;
-      font-size: 1.05rem;
-      line-height: 1.9;
-      color: var(--text);
+    .focus-meta {
+      display: flex;
+      justify-content: flex-end;
+      align-items: baseline;
+      gap: 16px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .focus-meta span:last-child {
+      color: rgba(21, 21, 21, 0.44);
+    }
+
+    .focus-desc {
+      margin: 12px 0 0;
+      max-width: 34rem;
+      font-size: 1rem;
+      color: var(--muted);
     }
 
     .footer {
-      padding: 24px 0 38px;
-      border-top: 1px solid rgba(21, 21, 21, 0.08);
-      color: var(--muted);
-      font-size: 0.94rem;
+      padding: 56px 0 70px;
     }
 
-    @media (max-width: 980px) {
-      .hero-grid {
+    .footer-line {
+      height: 1px;
+      background: var(--line);
+      margin-bottom: 22px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer-row a {
+      color: var(--accent);
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .section-head,
+      .focus-content {
         grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        max-width: 12ch;
+      }
+
+      .focus-meta {
+        justify-content: flex-start;
+        text-align: left;
       }
     }
 
     @media (max-width: 760px) {
-      :root {
-        --header-h: 126px;
-      }
-
       .site-header {
         height: auto;
+        padding: 16px 0;
       }
 
       .header-inner {
-        min-height: var(--header-h);
-        padding: 14px 0;
         flex-direction: column;
         align-items: flex-start;
       }
 
+      nav {
+        flex-wrap: wrap;
+        gap: 14px 22px;
+      }
+
       .hero {
-        padding: 56px 0 36px;
+        padding-top: 72px;
       }
 
-      .section {
-        padding: 28px 0 72px;
+      .focus-item {
+        grid-template-columns: 1fr;
+        gap: 14px;
       }
 
-      .hero-intro {
-        min-height: auto;
+      .focus-number {
+        margin-bottom: 2px;
       }
 
-      .projects-table,
-      .projects-table tbody,
-      .projects-table tr,
-      .projects-table th,
-      .projects-table td {
-        display: block;
-        width: 100%;
-      }
-
-      .projects-table thead {
-        display: none;
-      }
-
-      .projects-table tr {
-        border-bottom: 1px solid var(--line);
-      }
-
-      .projects-table tr:last-child {
-        border-bottom: none;
-      }
-
-      .projects-table td {
-        border-bottom: none;
-        padding: 10px 18px;
-      }
-
-      .projects-table td:first-child {
-        padding-top: 18px;
-        font-weight: 700;
-      }
-
-      .projects-table td:last-child {
-        padding-bottom: 18px;
+      .container,
+      .header-inner {
+        width: min(100% - 32px, var(--max));
       }
     }
   </style>
 </head>
 <body>
-
   <header class="site-header">
-    <div class="container header-inner">
-      <a href="#uvod" class="logo">Jan Rehák | Elektro projekce</a>
+    <div class="header-inner">
+      <a href="#uvod" class="brand" aria-label="Jan Rehak | Elektro projekce">
+        <span class="brand-main">JAN REHAK</span>
+        <span class="brand-divider">|</span>
+        <span class="brand-sub">ELEKTRO PROJEKCE</span>
+      </a>
 
-      <nav class="nav">
-        <a href="#uvod" class="nav-link active">Úvod</a>
-        <a href="#o-me" class="nav-link">O mě</a>
-        <a href="#ukazky" class="nav-link">Ukázky projektů</a>
-        <a href="#kontakt" class="nav-link">Kontakt</a>
+      <nav>
+        <a href="#uvod" class="active">Úvod</a>
+        <a href="#zamereni">Zaměření</a>
+        <a href="#kontakt" class="contact-link">Kontakt</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section id="uvod" class="hero">
+    <section class="hero" id="uvod">
       <div class="container hero-grid">
-        <div class="hero-intro">
-          <p>
-            Projektová dokumentace elektroinstalací s důrazem na přehlednost,
-            technickou logiku a použitelný výstup pro realizaci.
+        <div>
+          <p class="eyebrow">Elektro projekce</p>
+          <h1>Čisté a promyšlené řešení elektroinstalací.</h1>
+          <p class="hero-text">
+            Projektuji elektroinstalace pro rodinné domy, rekonstrukce i menší stavby
+            s důrazem na přehlednost, funkčnost a návaznost na reálnou realizaci.
           </p>
         </div>
 
-        <aside class="hero-side">
-          <div class="hero-side-title">Zaměření</div>
-          <ul>
-            <li>Silnoproudé rozvody</li>
-            <li>Hromosvody a uzemnění</li>
-            <li>Fotovoltaika</li>
-            <li>Světelně-technické výpočty</li>
-            <li>Veřejné osvětlení a pasportizace</li>
-            <li>Zpracování protokolu o určení vnějších vlivů</li>
-            <li>Autorský dozor</li>
-          </ul>
-        </aside>
-      </div>
-    </section>
-
-    <section id="o-me" class="section">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-label">O mě</div>
-          <h2>Technický a přehledný přístup</h2>
-          <p>
-            Zpracovávám projektovou dokumentaci silnoproudých elektroinstalací
-            pro rodinné domy, bytové objekty, průmyslové a provozní stavby.
-            Důraz kladu na technickou správnost, čitelnost dokumentace
-            a použitelnost při samotné realizaci.
-          </p>
-        </div>
-
-        <div class="about-box">
-          <p>
-            Sem si můžeš doplnit vlastní představení, zaměření, zkušenosti,
-            region působnosti a typický rozsah zakázek.
+        <div class="hero-side">
+          <div class="hero-line"></div>
+          <p class="hero-note">
+            Precizní technický návrh bez vizuálního balastu. Soustředění na podstatu,
+            detail a dobře čitelný výstup.
           </p>
         </div>
       </div>
     </section>
 
-    <section id="ukazky" class="section">
+    <section class="section" id="zamereni">
       <div class="container">
-        <div class="section-header">
-          <div class="section-label">Ukázky projektů</div>
-          <h2>Přehled vybraných zakázek</h2>
-          <p>
-            Do odkazu dej PDF soubor uložený v repozitáři, například do složky <strong>pdf</strong>.
+        <div class="section-head">
+          <p class="section-label">Zaměření</p>
+          <p class="section-intro">
+            Návrh elektroinstalací pro obytné i menší provozní stavby.
+            Důraz na srozumitelnou dokumentaci, technickou logiku a řešení,
+            která jsou dobře proveditelná i v praxi.
           </p>
         </div>
 
-        <div class="projects-wrap">
-          <table class="projects-table">
-            <thead>
-              <tr>
-                <th>Popis</th>
-                <th>Odkaz</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Rozvody v průmyslové hale</td>
-                <td><a href="pdf/prumyslova-hala.pdf" target="_blank" rel="noopener">Zobrazit PDF</a></td>
-              </tr>
-              <tr>
-                <td>Elektroinstalace rodinného domu</td>
-                <td><a href="pdf/rodinny-dum.pdf" target="_blank" rel="noopener">Zobrazit PDF</a></td>
-              </tr>
-              <tr>
-                <td>Rekonstrukce bytového objektu</td>
-                <td><a href="pdf/bytovy-objekt.pdf" target="_blank" rel="noopener">Zobrazit PDF</a></td>
-              </tr>
-              <tr>
-                <td>Veřejné osvětlení obce</td>
-                <td><a href="pdf/verejne-osvetleni.pdf" target="_blank" rel="noopener">Zobrazit PDF</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="kontakt" class="section">
-      <div class="container">
-        <div class="contact-simple">
-          <div class="contact-box">
-            <h2>Kontakt</h2>
-            <div class="contact-lines">
-              <div>Jan Rehák</div>
-              <div>Doplň adresu</div>
-              <div>tvuj@email.cz</div>
-              <div>+420 123 456 789</div>
-              <div>IČO: 12345678</div>
+        <div class="focus-list">
+          <article class="focus-item">
+            <div class="focus-number">01</div>
+            <div class="focus-content">
+              <div class="focus-title-wrap">
+                <h3 class="focus-title">Rodinné domy</h3>
+                <p class="focus-desc">
+                  Projekt elektroinstalace pro novostavby i rekonstrukce se zaměřením
+                  na čisté rozvržení okruhů, rozvaděčů a návaznosti na skutečné užívání domu.
+                </p>
+              </div>
+              <div class="focus-meta">
+                <span>novostavby / rekonstrukce</span>
+                <span>obytné stavby</span>
+              </div>
             </div>
-          </div>
+          </article>
+
+          <article class="focus-item">
+            <div class="focus-number">02</div>
+            <div class="focus-content">
+              <div class="focus-title-wrap">
+                <h3 class="focus-title">Byty a bytové jednotky</h3>
+                <p class="focus-desc">
+                  Návrh rozvodů, zásuvkových a světelných okruhů, koordinace dispozice
+                  a technického řešení podle konkrétního způsobu využití prostoru.
+                </p>
+              </div>
+              <div class="focus-meta">
+                <span>interiérové úpravy</span>
+                <span>bytové jednotky</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="focus-item">
+            <div class="focus-number">03</div>
+            <div class="focus-content">
+              <div class="focus-title-wrap">
+                <h3 class="focus-title">Technické zázemí staveb</h3>
+                <p class="focus-desc">
+                  Řešení rozvaděčů, trasování vedení, technických místností a vazeb
+                  mezi jednotlivými profesemi tak, aby projekt fungoval jako celek.
+                </p>
+              </div>
+              <div class="focus-meta">
+                <span>rozvaděče / trasy</span>
+                <span>koordinace profesí</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="focus-item">
+            <div class="focus-number">04</div>
+            <div class="focus-content">
+              <div class="focus-title-wrap">
+                <h3 class="focus-title">Dokumentace a úpravy návrhu</h3>
+                <p class="focus-desc">
+                  Zpracování projektové dokumentace, doplnění změn během přípravy i realizace
+                  a úpravy návrhu podle konkrétních požadavků stavby.
+                </p>
+              </div>
+              <div class="focus-meta">
+                <span>projektová dokumentace</span>
+                <span>revize řešení</span>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">© 2026 Jan Rehák | Elektro projekce</div>
+  <footer class="footer" id="kontakt">
+    <div class="container">
+      <div class="footer-line"></div>
+      <div class="footer-row">
+        <div>Jan Rehák — Elektro projekce</div>
+        <div><a href="mailto:info@janrehak.cz">info@janrehak.cz</a></div>
+      </div>
+    </div>
   </footer>
-
-  <script>
-    const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll(".nav-link");
-
-    function setActiveLink() {
-      const scrollY = window.pageYOffset;
-      const offset = 150;
-
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop - offset;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute("id");
-
-        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-          navLinks.forEach((link) => link.classList.remove("active"));
-          const activeLink = document.querySelector('.nav-link[href="#' + sectionId + '"]');
-          if (activeLink) activeLink.classList.add("active");
-        }
-      });
-    }
-
-    window.addEventListener("scroll", setActiveLink);
-    window.addEventListener("load", setActiveLink);
-  </script>
-
 </body>
 </html>
